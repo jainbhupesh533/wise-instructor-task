@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: /app/start.sh
+    volumes:
+      - .:/app
+    ports:
+      - "127.0.0.1:8000:8000"
+    env_file:
+      - .env
+    environment:
+      DB_ENGINE: django.db.backends.sqlite3
+      DB_NAME: /app/db.sqlite3  # Path to SQLite database file
+      TZ: "UTC"
